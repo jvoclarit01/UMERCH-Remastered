@@ -35,7 +35,7 @@ export default function App() {
             scrollTrigger: {
                 trigger: "#hero-pin",
                 start: "top top",
-                end: "+=200%", // Increased overall scrub distance for slower, cinematic transitions
+                end: "+=150%", // Increased overall scrub distance for slower, cinematic transitions
                 pin: true,
                 scrub: 1,
                 snap: {
