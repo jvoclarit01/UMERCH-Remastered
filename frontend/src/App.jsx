@@ -28,14 +28,14 @@ export default function App() {
     let ctx = gsap.context(() => {
         // 1. Pinned Cinematic Hero Journey
         gsap.set(".hero-img-reveal", { opacity: 0, scale: 1.1 }); 
-        gsap.set(".hero-start-screen", { opacity: 1, scale: 1 });
+        gsap.set(".hero-aww-start", { opacity: 1, backgroundColor: "rgba(10, 10, 10, 1)" });
         gsap.set(".hero-fg-content", { opacity: 0, y: 30 });
 
         let heroTl = gsap.timeline({
             scrollTrigger: {
                 trigger: "#hero-pin",
                 start: "top top",
-                end: "+=150%", // Increased overall scrub distance for slower, cinematic transitions
+                end: "+=150%", // Cinematic transitions
                 pin: true,
                 scrub: 1,
                 snap: {
@@ -47,8 +47,18 @@ export default function App() {
         });
 
         heroTl
-            // Phase 1: Logo start screen scales up and fades into darkness
-            .to(".hero-start-screen", { opacity: 0, scale: 2, duration: 1.5, ease: "power2.in" })
+            // Phase 1: 3D character stagger and explosion while background turns transparent
+            .to(".hero-aww-char", { 
+                y: (i) => (i % 2 === 0 ? -150 : 150),
+                rotationX: 90,
+                scale: 1.5,
+                opacity: 0,
+                stagger: 0.05,
+                duration: 1.5,
+                ease: "power3.inOut"
+            }, 0)
+            .to([".hero-aww-top", ".hero-aww-bottom"], { opacity: 0, duration: 1 }, 0)
+            .to(".hero-aww-start", { backgroundColor: "rgba(10, 10, 10, 0)", duration: 1.5 }, 0.2)
             // Phase 2: The model image (umerch_hero_generated) fades in and scales down
             .to(".hero-img-reveal", { opacity: 1, scale: 1, duration: 2, ease: "power2.out" }, 0.5)
             // Phase 3: The actual usable hero content (text) fades in

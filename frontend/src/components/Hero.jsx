@@ -2,10 +2,27 @@ export default function Hero() {
   return (
     <section className="hero-section" id="hero-pin">
         <div className="hero-track">
-             <div className="hero-start-screen">
-                  <img src="/um-assets/logo_um_davao.png" alt="UM Logo" className="hero-center-logo" />
-                  <div className="hero-center-text">UMERCH</div>
-                  <div className="hero-center-sub">PREMIUM UM MERCHANDISE.</div>
+             <div className="hero-aww-start">
+                  <div className="hero-aww-top">
+                      <div className="hero-aww-logo-wrap">
+                          <img src="/um-assets/logo_um_davao.png" alt="UM Logo" className="hero-aww-logo" />
+                      </div>
+                      <div className="hero-aww-line">EST. 2026</div>
+                  </div>
+                  
+                  <div className="hero-aww-main">
+                      <div className="hero-aww-char" data-char="U" style={{ "--char-index": 0 }}>U</div>
+                      <div className="hero-aww-char" data-char="M" style={{ "--char-index": 1 }}>M</div>
+                      <div className="hero-aww-char" data-char="E" style={{ "--char-index": 2 }}>E</div>
+                      <div className="hero-aww-char" data-char="R" style={{ "--char-index": 3 }}>R</div>
+                      <div className="hero-aww-char" data-char="C" style={{ "--char-index": 4 }}>C</div>
+                      <div className="hero-aww-char" data-char="H" style={{ "--char-index": 5 }}>H</div>
+                  </div>
+
+                  <div className="hero-aww-bottom">
+                      <div className="hero-aww-line">PREMIUM CAPSULE</div>
+                      <div className="hero-aww-line" style={{ textAlign: "right" }}>SCROLL TO UNVEIL</div>
+                  </div>
              </div>
              
              <div className="hero-img-reveal">
