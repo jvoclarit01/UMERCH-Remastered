@@ -3,10 +3,7 @@ export default function Hero() {
     <section className="hero-section" id="hero-pin">
         <div className="hero-track">
              <div className="hero-aww-start">
-                  <div className="hero-aww-top">
-                      <div className="hero-aww-line">UMERCH ARCHIVE</div>
-                      <div className="hero-aww-line">EST. 2026</div>
-                  </div>
+                  {/* Top text removed as requested */}
                   
                   <div className="hero-aww-main">
                       <div className="hero-aww-logo-wrap">

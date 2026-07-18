@@ -320,7 +320,7 @@
             pointer-events: none;
         }
 
-        .hero-aww-top, .hero-aww-bottom {
+        .hero-aww-bottom {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -337,10 +337,9 @@
         }
 
         .hero-aww-logo {
-            width: 50px;
-            height: 50px;
+            width: 100px;
+            height: 100px;
             object-fit: cover;
-            animation: floatLogo 6s ease-in-out infinite;
         }
 
         .hero-aww-main {
@@ -363,7 +362,7 @@
         }
 
         .hero-aww-char {
-            font-size: 13vw;
+            font-size: 10vw;
             font-family: var(--font-display);
             font-weight: 900;
             line-height: 0.8;

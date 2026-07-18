@@ -58,7 +58,7 @@ export default function App() {
                 ease: "power3.inOut"
             }, 0)
             .to(".hero-aww-logo-wrap", { opacity: 0, scale: 0.5, y: -50, duration: 1 }, 0)
-            .to([".hero-aww-top", ".hero-aww-bottom"], { opacity: 0, duration: 1 }, 0)
+            .to(".hero-aww-bottom", { opacity: 0, duration: 1 }, 0)
             .to(".hero-aww-start", { backgroundColor: "rgba(10, 10, 10, 0)", duration: 1.5 }, 0.2)
             // Phase 2: The model image (umerch_hero_generated) fades in and scales down
             .to(".hero-img-reveal", { opacity: 1, scale: 1, duration: 2, ease: "power2.out" }, 0.5)
