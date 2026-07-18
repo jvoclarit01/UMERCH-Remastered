@@ -67,16 +67,16 @@ export default function App() {
                         trigger: ".scene-3",
                         pin: true,
                         scrub: 1,
-                        end: () => "+=" + (hTrack.offsetWidth * 1.5) // Increased to accommodate the pauses
+                        end: () => "+=" + (hTrack.offsetWidth * 0.8) // Reduced for much faster scrolling
                     }
                 });
 
                 // The "Sticky Snapping" Timeline
-                hTl.to({}, { duration: 0.5 }) // Pause at Panel 1
+                hTl.to({}, { duration: 0.25 }) // Quick Pause at Panel 1
                    .to(hPanels, { xPercent: -100, ease: "power1.inOut", duration: 1 }) // Slide to Panel 2
-                   .to({}, { duration: 0.5 }) // Pause at Panel 2
+                   .to({}, { duration: 0.25 }) // Quick Pause at Panel 2
                    .to(hPanels, { xPercent: -200, ease: "power1.inOut", duration: 1 }) // Slide to Panel 3
-                   .to({}, { duration: 0.5 }); // Pause at Panel 3
+                   .to({}, { duration: 0.25 }); // Quick Pause at Panel 3
 
                 gsap.to(".floating-img", {
                     x: 150,
@@ -86,7 +86,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + (hTrack.offsetWidth * 1.5),
+                        end: () => "+=" + (hTrack.offsetWidth * 0.8),
                         scrub: 1
                     }
                 });
@@ -100,7 +100,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + (hTrack.offsetWidth * 1.5),
+                        end: () => "+=" + (hTrack.offsetWidth * 0.8),
                         scrub: 1
                     }
                 });
@@ -113,7 +113,7 @@ export default function App() {
                         scrollTrigger: {
                             trigger: ".scene-3",
                             start: "top top",
-                            end: () => "+=" + (hTrack.offsetWidth * 1.5),
+                            end: () => "+=" + (hTrack.offsetWidth * 0.8),
                             scrub: 1
                         }
                     });
@@ -227,7 +227,7 @@ export default function App() {
             ScrollTrigger.create({
                 trigger: sec,
                 start: "center center",
-                end: "+=50%", // Stay pinned/paused for half a viewport height
+                end: "+=25%", // Reduced pause time for faster scrolling out
                 pin: true,
             });
         });
