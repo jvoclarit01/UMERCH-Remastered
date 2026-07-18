@@ -19,9 +19,8 @@ export default function Hero() {
                       </div>
                   </div>
 
-                  <div className="hero-aww-bottom">
-                      <div className="hero-aww-line">PREMIUM CAPSULE</div>
-                      <div className="hero-aww-line" style={{ textAlign: "right" }}>SCROLL TO UNVEIL</div>
+                  <div className="hero-aww-bottom" style={{ justifyContent: "center" }}>
+                      <div className="hero-aww-line">SCROLL TO UNVEIL</div>
                   </div>
              </div>
              
