@@ -4,19 +4,22 @@ export default function Hero() {
         <div className="hero-track">
              <div className="hero-aww-start">
                   <div className="hero-aww-top">
-                      <div className="hero-aww-logo-wrap">
-                          <img src="/um-assets/logo_um_davao.png" alt="UM Logo" className="hero-aww-logo" />
-                      </div>
+                      <div className="hero-aww-line">UMERCH ARCHIVE</div>
                       <div className="hero-aww-line">EST. 2026</div>
                   </div>
                   
                   <div className="hero-aww-main">
-                      <div className="hero-aww-char" data-char="U" style={{ "--char-index": 0 }}>U</div>
-                      <div className="hero-aww-char" data-char="M" style={{ "--char-index": 1 }}>M</div>
-                      <div className="hero-aww-char" data-char="E" style={{ "--char-index": 2 }}>E</div>
-                      <div className="hero-aww-char" data-char="R" style={{ "--char-index": 3 }}>R</div>
-                      <div className="hero-aww-char" data-char="C" style={{ "--char-index": 4 }}>C</div>
-                      <div className="hero-aww-char" data-char="H" style={{ "--char-index": 5 }}>H</div>
+                      <div className="hero-aww-logo-wrap">
+                          <img src="/um-assets/logo_um_davao.png" alt="UM Logo" className="hero-aww-logo" />
+                      </div>
+                      <div className="hero-aww-letters">
+                          <div className="hero-aww-char" data-char="U" style={{ "--char-index": 0 }}>U</div>
+                          <div className="hero-aww-char" data-char="M" style={{ "--char-index": 1 }}>M</div>
+                          <div className="hero-aww-char" data-char="E" style={{ "--char-index": 2 }}>E</div>
+                          <div className="hero-aww-char" data-char="R" style={{ "--char-index": 3 }}>R</div>
+                          <div className="hero-aww-char" data-char="C" style={{ "--char-index": 4 }}>C</div>
+                          <div className="hero-aww-char" data-char="H" style={{ "--char-index": 5 }}>H</div>
+                      </div>
                   </div>
 
                   <div className="hero-aww-bottom">
