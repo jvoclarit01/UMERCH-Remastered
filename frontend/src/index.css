@@ -651,7 +651,6 @@
             max-height: 250px;
             object-fit: cover;
             border-radius: 50%;
-            animation: spinSlow 20s linear infinite;
         }
 
         .finale-text {
