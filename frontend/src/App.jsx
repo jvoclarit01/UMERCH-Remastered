@@ -76,7 +76,7 @@ export default function App() {
                             delay: 0,
                             ease: "power2.inOut"
                         },
-                        end: () => "+=" + (hTrack.offsetWidth * 2) // Long scroll distance makes the automatic magnet jump highly visible
+                        end: () => "+=" + (hTrack.offsetWidth * 0.8) // Much shorter distance!
                     }
                 });
 
@@ -88,7 +88,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + (hTrack.offsetWidth * 2),
+                        end: () => "+=" + (hTrack.offsetWidth * 0.8),
                         scrub: 1
                     }
                 });
@@ -102,7 +102,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + (hTrack.offsetWidth * 2),
+                        end: () => "+=" + (hTrack.offsetWidth * 0.8),
                         scrub: 1
                     }
                 });
@@ -115,7 +115,7 @@ export default function App() {
                         scrollTrigger: {
                             trigger: ".scene-3",
                             start: "top top",
-                            end: () => "+=" + (hTrack.offsetWidth * 2),
+                            end: () => "+=" + (hTrack.offsetWidth * 0.8),
                             scrub: 1
                         }
                     });
