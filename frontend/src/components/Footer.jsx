@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="footer-content">
             <div className="footer-links-row">
                 <div className="f-col f-logo-col">
-                    <img src="/um-assets/logo_um_davao.png" alt="UM Logo" className="footer-logo" />
+                    <img src="/um-assets/University_of_Mindanao_Logo.png" alt="UM Logo" className="footer-logo" />
                     <p className="footer-logo-text">University of Mindanao<br/>Premium Gear</p>
                 </div>
                 <div className="f-col">

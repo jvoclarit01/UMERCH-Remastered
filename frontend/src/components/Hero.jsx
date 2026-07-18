@@ -7,7 +7,7 @@ export default function Hero() {
                   
                   <div className="hero-aww-main">
                       <div className="hero-aww-logo-wrap">
-                          <img src="/um-assets/logo_um_davao.png" alt="UM Logo" className="hero-aww-logo" />
+                          <img src="/um-assets/University_of_Mindanao_Logo.png" alt="UM Logo" className="hero-aww-logo" />
                       </div>
                       <div className="hero-aww-letters">
                           <div className="hero-aww-char" data-char="U" style={{ "--char-index": 0 }}>U</div>

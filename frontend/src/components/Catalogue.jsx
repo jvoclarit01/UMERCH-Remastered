@@ -30,7 +30,7 @@ export default function Catalogue() {
                 <div className="h-bg-text outline-text-dark">THE CATALOGUE</div>
                 <div className="h-panel-content centered-panel">
                     <div className="catalog-finale">
-                        <img src="/um-assets/logo_um_davao.png" alt="UM Tagum Seal" className="finale-logo" />
+                        <img src="/um-assets/University_of_Mindanao_Logo.png" alt="UM Tagum Seal" className="finale-logo" />
                         <h2 className="finale-text">THE<br/>CATALOGUE</h2>
                     </div>
                 </div>

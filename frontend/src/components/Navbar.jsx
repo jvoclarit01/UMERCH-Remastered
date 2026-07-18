@@ -16,7 +16,7 @@ export default function Navbar() {
     <>
       <nav className={`invisible-split-nav ${isOpen ? 'menu-open' : ''}`}>
           <div className="nav-left">
-              <img src="/um-assets/logo_um_davao.png" alt="UM Tagum Seal" className="nav-img" />
+              <img src="/um-assets/University_of_Mindanao_Logo.png" alt="UM Tagum Seal" className="nav-img" />
               <span className="nav-brand">UMERCH</span>
           </div>
           <div className="nav-right">
