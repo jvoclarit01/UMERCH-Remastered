@@ -321,8 +321,12 @@
         }
 
         .hero-aww-bottom {
+            position: absolute;
+            bottom: 3vw;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             text-transform: uppercase;
             font-size: 0.9vw;
