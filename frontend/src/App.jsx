@@ -62,23 +62,31 @@ export default function App() {
             if(hTrack) {
                 let hPanels = gsap.utils.toArray(".h-panel");
 
-                gsap.to(hPanels, {
-                    xPercent: -100 * (hPanels.length - 1),
-                    ease: "none",
+                let hTl = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".scene-3",
                         pin: true,
                         scrub: 1,
                         snap: {
-                            snapTo: 1 / (hPanels.length - 1), 
-                            directional: true, // Forces snapping to the NEXT panel even on a tiny scroll
+                            snapTo: "labels", // Snap perfectly to the center locks
+                            directional: true, // Flicking the wheel snaps to the NEXT panel
                             duration: {min: 0.4, max: 0.8},
                             delay: 0,
                             ease: "power2.inOut"
                         },
-                        end: () => "+=" + (hTrack.offsetWidth * 0.8) // Much shorter distance!
+                        end: () => "+=" + (hTrack.offsetWidth * 1.5)
                     }
                 });
+
+                // The "Lock and Snap" Timeline
+                hTl.addLabel("panel1")
+                   .to({}, { duration: 0.3 }) // Lock in center of Panel 1
+                   .to(hPanels, { xPercent: -100, ease: "none", duration: 1 }) // Magnetic flight to Panel 2
+                   .addLabel("panel2")
+                   .to({}, { duration: 0.3 }) // Lock in center of Panel 2
+                   .to(hPanels, { xPercent: -200, ease: "none", duration: 1 }) // Magnetic flight to Panel 3
+                   .addLabel("panel3")
+                   .to({}, { duration: 0.3 }); // Lock in center of Panel 3
 
                 gsap.to(".floating-img", {
                     x: 150,
@@ -88,7 +96,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + (hTrack.offsetWidth * 0.8),
+                        end: () => "+=" + (hTrack.offsetWidth * 1.5),
                         scrub: 1
                     }
                 });
@@ -102,7 +110,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + (hTrack.offsetWidth * 0.8),
+                        end: () => "+=" + (hTrack.offsetWidth * 1.5),
                         scrub: 1
                     }
                 });
@@ -115,7 +123,7 @@ export default function App() {
                         scrollTrigger: {
                             trigger: ".scene-3",
                             start: "top top",
-                            end: () => "+=" + (hTrack.offsetWidth * 0.8),
+                            end: () => "+=" + (hTrack.offsetWidth * 1.5),
                             scrub: 1
                         }
                     });
