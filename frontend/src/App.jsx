@@ -94,6 +94,20 @@ export default function App() {
                         scrub: 1
                     }
                 });
+
+                // Awwwards Background Text Parallax
+                gsap.utils.toArray(".h-bg-text").forEach((bgText, i) => {
+                    gsap.to(bgText, {
+                        x: i % 2 === 0 ? "15vw" : "-15vw",
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: ".scene-3",
+                            start: "top top",
+                            end: () => "+=" + hTrack.offsetWidth,
+                            scrub: 1
+                        }
+                    });
+                });
             }
         });
         
