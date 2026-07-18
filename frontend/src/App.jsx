@@ -35,9 +35,14 @@ export default function App() {
             scrollTrigger: {
                 trigger: "#hero-pin",
                 start: "top top",
-                end: "+=150%", // User scrolls 1.5x the screen height to watch the film
+                end: "+=50%", // Drastically reduced for fast scrolling
                 pin: true,
-                scrub: 1
+                scrub: 1,
+                snap: {
+                    snapTo: [0, 1],
+                    duration: 0.5,
+                    ease: "power1.inOut"
+                }
             }
         });
 
@@ -64,7 +69,12 @@ export default function App() {
                         trigger: ".scene-3",
                         pin: true,
                         scrub: 1,
-                        end: () => "+=" + hTrack.offsetWidth
+                        snap: {
+                            snapTo: 1 / (hPanels.length - 1), // Snaps smoothly to each panel
+                            duration: 0.4,
+                            ease: "power2.inOut"
+                        },
+                        end: () => "+=" + (hTrack.offsetWidth * 0.4)
                     }
                 });
 
@@ -76,7 +86,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + hTrack.offsetWidth,
+                        end: () => "+=" + (hTrack.offsetWidth * 0.4),
                         scrub: 1
                     }
                 });
@@ -90,7 +100,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + hTrack.offsetWidth,
+                        end: () => "+=" + (hTrack.offsetWidth * 0.4),
                         scrub: 1
                     }
                 });
@@ -103,7 +113,7 @@ export default function App() {
                         scrollTrigger: {
                             trigger: ".scene-3",
                             start: "top top",
-                            end: () => "+=" + hTrack.offsetWidth,
+                            end: () => "+=" + (hTrack.offsetWidth * 0.4),
                             scrub: 1
                         }
                     });
