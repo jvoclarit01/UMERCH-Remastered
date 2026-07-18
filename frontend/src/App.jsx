@@ -71,11 +71,12 @@ export default function App() {
                         scrub: 1,
                         snap: {
                             snapTo: 1 / (hPanels.length - 1), 
+                            directional: true, // Forces snapping to the NEXT panel even on a tiny scroll
                             duration: {min: 0.4, max: 0.8},
-                            delay: 0, // 0 delay creates the instant "magnet" pull
+                            delay: 0,
                             ease: "power2.inOut"
                         },
-                        end: () => "+=" + hTrack.offsetWidth
+                        end: () => "+=" + (hTrack.offsetWidth * 2) // Long scroll distance makes the automatic magnet jump highly visible
                     }
                 });
 
@@ -87,7 +88,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + hTrack.offsetWidth,
+                        end: () => "+=" + (hTrack.offsetWidth * 2),
                         scrub: 1
                     }
                 });
@@ -101,7 +102,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + hTrack.offsetWidth,
+                        end: () => "+=" + (hTrack.offsetWidth * 2),
                         scrub: 1
                     }
                 });
@@ -114,7 +115,7 @@ export default function App() {
                         scrollTrigger: {
                             trigger: ".scene-3",
                             start: "top top",
-                            end: () => "+=" + hTrack.offsetWidth,
+                            end: () => "+=" + (hTrack.offsetWidth * 2),
                             scrub: 1
                         }
                     });
