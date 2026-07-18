@@ -62,21 +62,21 @@ export default function App() {
             if(hTrack) {
                 let hPanels = gsap.utils.toArray(".h-panel");
 
-                gsap.to(hPanels, {
-                    xPercent: -100 * (hPanels.length - 1),
-                    ease: "none",
+                let hTl = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".scene-3",
                         pin: true,
                         scrub: 1,
-                        snap: {
-                            snapTo: 1 / (hPanels.length - 1), // Snaps smoothly to each panel
-                            duration: 0.4,
-                            ease: "power2.inOut"
-                        },
-                        end: () => "+=" + (hTrack.offsetWidth * 0.4)
+                        end: () => "+=" + (hTrack.offsetWidth * 1.5) // Increased to accommodate the pauses
                     }
                 });
+
+                // The "Sticky Snapping" Timeline
+                hTl.to({}, { duration: 0.5 }) // Pause at Panel 1
+                   .to(hPanels, { xPercent: -100, ease: "power1.inOut", duration: 1 }) // Slide to Panel 2
+                   .to({}, { duration: 0.5 }) // Pause at Panel 2
+                   .to(hPanels, { xPercent: -200, ease: "power1.inOut", duration: 1 }) // Slide to Panel 3
+                   .to({}, { duration: 0.5 }); // Pause at Panel 3
 
                 gsap.to(".floating-img", {
                     x: 150,
@@ -86,7 +86,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + (hTrack.offsetWidth * 0.4),
+                        end: () => "+=" + (hTrack.offsetWidth * 1.5),
                         scrub: 1
                     }
                 });
@@ -100,7 +100,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + (hTrack.offsetWidth * 0.4),
+                        end: () => "+=" + (hTrack.offsetWidth * 1.5),
                         scrub: 1
                     }
                 });
@@ -113,7 +113,7 @@ export default function App() {
                         scrollTrigger: {
                             trigger: ".scene-3",
                             start: "top top",
-                            end: () => "+=" + (hTrack.offsetWidth * 0.4),
+                            end: () => "+=" + (hTrack.offsetWidth * 1.5),
                             scrub: 1
                         }
                     });
@@ -220,6 +220,17 @@ export default function App() {
                 }
             }
         );
+
+        // 7. Sticky Section Pauses ("Snap there until I scroll again")
+        let stickySections = gsap.utils.toArray([".feature-section", ".footer-fixed"]);
+        stickySections.forEach(sec => {
+            ScrollTrigger.create({
+                trigger: sec,
+                start: "center center",
+                end: "+=50%", // Stay pinned/paused for half a viewport height
+                pin: true,
+            });
+        });
     }); // End of gsap.context
 
     // Cleanup on unmount
