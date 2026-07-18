@@ -87,7 +87,7 @@ export default function App() {
                             delay: 0,
                             ease: "power2.inOut"
                         },
-                        end: () => "+=" + (hTrack.offsetWidth * 1.5)
+                        end: () => "+=" + (hTrack.offsetWidth * 0.75)
                     }
                 });
 
@@ -109,7 +109,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + (hTrack.offsetWidth * 1.5),
+                        end: () => "+=" + (hTrack.offsetWidth * 0.75),
                         scrub: 1
                     }
                 });
@@ -123,7 +123,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + (hTrack.offsetWidth * 1.5),
+                        end: () => "+=" + (hTrack.offsetWidth * 0.75),
                         scrub: 1
                     }
                 });
@@ -136,7 +136,7 @@ export default function App() {
                         scrollTrigger: {
                             trigger: ".scene-3",
                             start: "top top",
-                            end: () => "+=" + (hTrack.offsetWidth * 1.5),
+                            end: () => "+=" + (hTrack.offsetWidth * 0.75),
                             scrub: 1
                         }
                     });
