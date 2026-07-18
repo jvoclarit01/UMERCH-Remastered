@@ -35,7 +35,7 @@ export default function App() {
             scrollTrigger: {
                 trigger: "#hero-pin",
                 start: "top top",
-                end: "+=50%", // Drastically reduced for fast scrolling
+                end: "+=200%", // Increased overall scrub distance for slower, cinematic transitions
                 pin: true,
                 scrub: 1,
                 snap: {
@@ -49,10 +49,12 @@ export default function App() {
         heroTl
             // Phase 1: Logo start screen scales up and fades into darkness
             .to(".hero-start-screen", { opacity: 0, scale: 2, duration: 1.5, ease: "power2.in" })
-            // Phase 2: Model image fades in from the darkness
+            // Phase 2: The model image (umerch_hero_generated) fades in and scales down
             .to(".hero-img-reveal", { opacity: 1, scale: 1, duration: 2, ease: "power2.out" }, 0.5)
-            // Phase 3: The actual usable hero content fades in
-            .to(".hero-fg-content", { opacity: 1, y: 0, duration: 1 }, 1.8);
+            // Phase 3: The actual usable hero content (text) fades in
+            .to(".hero-fg-content", { opacity: 1, y: 0, duration: 1 }, 1.8)
+            // Phase 4: Added scrub distance at the end so the user can look at the model image before it unpins!
+            .to({}, { duration: 1.5 });
 
         // 3. Horizontal Run (Desktop Only)
         let mm = gsap.matchMedia();
