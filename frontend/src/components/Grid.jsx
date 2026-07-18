@@ -16,7 +16,7 @@ export default function Grid() {
                   </div>
               </div>
               
-              <div className="product-card transparent-bg">
+              <div className="product-card">
                   <img src="/um-assets/mug.png" alt="UM Mug" className="product-img" />
                   <div className="product-info">
                       <div className="product-name">Classic Ceramic Mug</div>
@@ -32,7 +32,7 @@ export default function Grid() {
                   </div>
               </div>
 
-              <div className="product-card transparent-bg">
+              <div className="product-card">
                   <img src="/um-assets/pillow.png" alt="UM Pillow" className="product-img" />
                   <div className="product-info">
                       <div className="product-name">Comfort Pillow</div>
@@ -48,7 +48,7 @@ export default function Grid() {
                   </div>
               </div>
               
-              <div className="product-card transparent-bg">
+              <div className="product-card">
                   <img src="/um-assets/nutbook.png" alt="Notebook" className="product-img" />
                   <div className="product-info">
                       <div className="product-name">Premium Notebook</div>

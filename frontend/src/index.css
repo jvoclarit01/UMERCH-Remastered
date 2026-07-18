@@ -741,12 +741,7 @@
             transform: scale(1.05);
         }
         
-        .product-card.transparent-bg .product-img {
-            object-fit: contain;
-            padding: 3rem;
-            background: #F4F4F4;
-        }
-        
+
         .product-info {
             position: absolute;
             bottom: 0;
