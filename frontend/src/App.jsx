@@ -62,21 +62,22 @@ export default function App() {
             if(hTrack) {
                 let hPanels = gsap.utils.toArray(".h-panel");
 
-                let hTl = gsap.timeline({
+                gsap.to(hPanels, {
+                    xPercent: -100 * (hPanels.length - 1),
+                    ease: "none",
                     scrollTrigger: {
                         trigger: ".scene-3",
                         pin: true,
                         scrub: 1,
-                        end: () => "+=" + (hTrack.offsetWidth * 0.8) // Reduced for much faster scrolling
+                        snap: {
+                            snapTo: 1 / (hPanels.length - 1), 
+                            duration: {min: 0.4, max: 0.8},
+                            delay: 0, // 0 delay creates the instant "magnet" pull
+                            ease: "power2.inOut"
+                        },
+                        end: () => "+=" + hTrack.offsetWidth
                     }
                 });
-
-                // The "Sticky Snapping" Timeline
-                hTl.to({}, { duration: 0.25 }) // Quick Pause at Panel 1
-                   .to(hPanels, { xPercent: -100, ease: "power1.inOut", duration: 1 }) // Slide to Panel 2
-                   .to({}, { duration: 0.25 }) // Quick Pause at Panel 2
-                   .to(hPanels, { xPercent: -200, ease: "power1.inOut", duration: 1 }) // Slide to Panel 3
-                   .to({}, { duration: 0.25 }); // Quick Pause at Panel 3
 
                 gsap.to(".floating-img", {
                     x: 150,
@@ -86,7 +87,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + (hTrack.offsetWidth * 0.8),
+                        end: () => "+=" + hTrack.offsetWidth,
                         scrub: 1
                     }
                 });
@@ -100,7 +101,7 @@ export default function App() {
                     scrollTrigger: {
                         trigger: ".scene-3",
                         start: "top top",
-                        end: () => "+=" + (hTrack.offsetWidth * 0.8),
+                        end: () => "+=" + hTrack.offsetWidth,
                         scrub: 1
                     }
                 });
@@ -113,7 +114,7 @@ export default function App() {
                         scrollTrigger: {
                             trigger: ".scene-3",
                             start: "top top",
-                            end: () => "+=" + (hTrack.offsetWidth * 0.8),
+                            end: () => "+=" + hTrack.offsetWidth,
                             scrub: 1
                         }
                     });
@@ -221,14 +222,19 @@ export default function App() {
             }
         );
 
-        // 7. Sticky Section Pauses ("Snap there until I scroll again")
-        let stickySections = gsap.utils.toArray([".feature-section", ".footer-fixed"]);
-        stickySections.forEach(sec => {
+        // 7. Magnetic Snapping for Vertical Sections
+        let magnetSections = gsap.utils.toArray([".feature-section", ".footer-fixed"]);
+        magnetSections.forEach(sec => {
             ScrollTrigger.create({
                 trigger: sec,
-                start: "center center",
-                end: "+=25%", // Reduced pause time for faster scrolling out
-                pin: true,
+                start: "top bottom",
+                end: "bottom top",
+                snap: {
+                    snapTo: 0.5, // 0.5 means center of element aligns with center of viewport
+                    duration: {min: 0.4, max: 0.8},
+                    delay: 0, // Instant magnetic pull
+                    ease: "power2.inOut"
+                }
             });
         });
     }); // End of gsap.context
