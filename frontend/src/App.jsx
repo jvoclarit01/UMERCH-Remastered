@@ -223,7 +223,7 @@ export default function App() {
         );
 
         // 7. Magnetic Snapping for Vertical Sections
-        let magnetSections = gsap.utils.toArray([".feature-section", ".footer-fixed"]);
+        let magnetSections = gsap.utils.toArray([".feature-section"]);
         magnetSections.forEach(sec => {
             ScrollTrigger.create({
                 trigger: sec,
