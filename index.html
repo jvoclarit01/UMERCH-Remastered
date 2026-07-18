@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMERCH | Awwwards Winning Campus Gear</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <style>
+        :root {
+            --red: #A00505;
+            --yellow: #F5A623;
+            --gray: #D9D9D9;
+            --white: #FFFFFF;
+            --black: #0A0A0A;
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Lenis setup */
+        html.lenis, html.lenis body {
+          height: auto;
+        }
+        .lenis.lenis-smooth {
+          scroll-behavior: auto !important;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+          overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+          overflow: hidden;
+        }
+
+        /* Dynamic Glass Pill Nav */
+        .glass-pill-nav {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 10, 10, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 100px;
+            padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            z-index: 100;
+            width: auto;
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .glass-pill-nav.scrolled:not(:hover) {
+            gap: 1.5rem;
+            padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+            background: rgba(10, 10, 10, 0.8);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-pill-nav.scrolled:not(:hover) .nav-center-links,
+        .glass-pill-nav.scrolled:not(:hover) .nav-brand {
+            width: 0;
+            opacity: 0;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .nav-img {
+            height: 38px;
+            width: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .nav-brand {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--white);
+            transition: opacity 0.4s, width 0.4s;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .nav-center-links {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            transition: opacity 0.4s, width 0.4s;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .nav-center-links a {
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            position: relative;
+        }
+
+        .nav-center-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background: var(--yellow);
+            transition: width 0.3s;
+        }
+        .nav-center-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cart {
+            background: var(--white);
+            color: var(--black);
+            padding: 0.8rem 1.5rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: transform 0.3s, background 0.3s, color 0.3s;
+        }
+
+        .nav-cart:hover {
+            transform: scale(1.05);
+            background: var(--red);
+            color: var(--white);
+        }
+        
+        /* Premium Minimal Hero Section */
+        .hero-section {
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            overflow: hidden;
+            background: var(--black);
+        }
+
+        .hero-bg-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 115vh; /* Slight extra height for subtle parallax */
+            z-index: 0;
+            will-change: transform;
+        }
+
+        .hero-bg-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 40%;
+            background: linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 100%);
+        }
+
+        .hero-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            will-change: transform, opacity;
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 4rem;
+            left: 4rem;
+            z-index: 10;
+            max-width: 400px;
+            will-change: transform, opacity;
+        }
+
+        .hero-title {
+            font-family: var(--font-body);
+            font-size: 3.25rem;
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-sub {
+            font-family: var(--font-body);
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            font-size: 1.1rem;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 4px;
+            transition: border-color 0.3s;
+        }
+        
+        .hero-btn:hover {
+            border-color: var(--white);
+        }
+
+        /* Scene 3: Horizontal Run */
+        .scene-3 {
+            width: 100vw;
+            height: 100vh;
+            background: var(--red);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        
+        .horizontal-track {
+            display: flex;
+            height: 100%;
+            width: 300vw;
+        }
+
+        .h-panel {
+            width: 100vw;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .h-panel-content {
+            width: 80%;
+            height: 80%;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .h-text {
+            flex: 1;
+            font-family: var(--font-display);
+            font-size: 7vw;
+            color: var(--white);
+            line-height: 0.9;
+            z-index: 2;
+            text-transform: uppercase;
+        }
+        .h-text span {
+            color: var(--yellow);
+        }
+
+        .h-img-container {
+            flex: 1.5;
+            height: 100%;
+            position: relative;
+        }
+        
+        .h-img-container img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 50px rgba(0,0,0,0.4));
+        }
+
+        /* Grid Section */
+        .shop-section {
+            background: var(--white);
+            color: var(--black);
+            padding: 10rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 5vw;
+            color: var(--red);
+            line-height: 1;
+        }
+        
+        .shop-all {
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-bottom: 2px solid var(--black);
+            padding-bottom: 5px;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background: var(--gray);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .product-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            padding: 2rem;
+            background: var(--white);
+        }
+        
+        .product-card.transparent-bg .product-img {
+            object-fit: contain;
+            background: #F4F4F4;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .product-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+        
+        .product-price {
+            color: var(--red);
+            font-weight: 700;
+        }
+
+        /* Feature Section */
+        .feature-section {
+            padding: 0 4rem 10rem;
+            background: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .feature-img {
+            width: 100%;
+            height: 70vh;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .feature-content h3 {
+            font-family: var(--font-display);
+            font-size: 4vw;
+            color: var(--red);
+            line-height: 1;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            color: #444;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--red);
+            color: var(--white);
+            padding: 1rem 3rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--black);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 8rem 4rem 4rem;
+        }
+        
+        .footer-huge {
+            font-family: var(--font-display);
+            font-size: 12vw;
+            text-align: center;
+            color: var(--yellow);
+            line-height: 0.8;
+            margin-bottom: 4rem;
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="glass-pill-nav">
+        <div class="logo">
+            <img src="./UM Assets/UM_logo_tagum.jpg" alt="UM Tagum Seal" class="nav-img">
+            <span class="nav-brand">UMERCH</span>
+        </div>
+        <div class="nav-center-links">
+            <a href="#">Collection</a>
+            <a href="#">Editorial</a>
+        </div>
+        <div class="nav-cart">
+            Cart (0)
+        </div>
+    </nav>
+
+    <!-- PREMIUM MINIMAL HERO -->
+    <section class="hero-section">
+        <div class="hero-bg-wrapper">
+            <img src="./assets/umerch_model_1784361024789.jpg" class="hero-bg" alt="Hero Model">
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">Carry UM with pride.</h1>
+            <p class="hero-sub">The new capsule collection.</p>
+            <a href="#" class="hero-btn">Shop new arrivals</a>
+        </div>
+    </section>
+
+    <!-- Scene 3: Horizontal Run -->
+    <div class="scene-3">
+        <div class="horizontal-track">
+            
+            <div class="h-panel">
+                <div class="h-panel-content">
+                    <div class="h-text">WEAR<br>YOUR<br><span>PRIDE</span></div>
+                    <div class="h-img-container">
+                        <img src="./UM Assets/umshert.png" alt="Apparel" class="floating-img">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="h-panel">
+                <div class="h-panel-content">
+                    <div class="h-img-container" style="flex:1;">
+                        <img src="./UM Assets/Totebag.png" alt="Totebag" class="floating-img-2">
+                    </div>
+                    <div class="h-text" style="text-align:right;">EVERYDAY<br>CARRY<br><span>GEAR</span></div>
+                </div>
+            </div>
+
+            <div class="h-panel" style="justify-content: center; background: var(--white);">
+                <div class="h-text" style="color: var(--black); text-align: center; font-size: 8vw;">
+                    <!-- SAVED SVG VECTOR LOGO -->
+                    <!--
+                    <svg viewBox="0 0 200 200" style="height: 120px; width: 120px; margin: 0 auto 2rem; display: block;">
+                      <circle cx="100" cy="100" r="95" fill="none" stroke="var(--red)" stroke-width="8"/>
+                      <circle cx="100" cy="100" r="82" fill="none" stroke="var(--red)" stroke-width="2"/>
+                      <path d="M 60,60 L 140,60 L 140,105 C 140,140 100,165 100,165 C 100,165 60,140 60,105 Z" fill="none" stroke="var(--red)" stroke-width="4"/>
+                      <line x1="90" y1="75" x2="90" y2="135" stroke="var(--red)" stroke-width="3"/>
+                      <path d="M 90,75 L 125,120 L 90,120 Z" fill="var(--red)"/>
+                      <path d="M 75,135 L 125,135 L 110,150 L 90,150 Z" fill="var(--red)"/>
+                      <circle cx="70" cy="80" r="2.5" fill="var(--red)"/>
+                      <circle cx="80" cy="85" r="2.5" fill="var(--red)"/>
+                      <circle cx="75" cy="95" r="2.5" fill="var(--red)"/>
+                    </svg>
+                    -->
+                    
+                    <img src="./UM Assets/UM_logo_tagum.jpg" alt="UM Tagum Seal" style="height: 120px; width: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 2rem; display: block;">
+                    THE CATALOGUE
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- AFTER FILM CONTENT -->
+    <section class="shop-section">
+        <div class="section-header">
+            <h2 class="section-title">NEW<br>ARRIVALS</h2>
+            <div class="shop-all">VIEW ALL PRODUCTS →</div>
+        </div>
+
+        <div class="shop-grid">
+            <div class="product-card">
+                <img src="./UM Assets/tshirt.jpg" alt="UM T-Shirt" class="product-img">
+                <div class="product-info">
+                    <div class="product-name">UM Essential Tee</div>
+                    <div class="product-price">₱350</div>
+                </div>
+            </div>
+            
+            <div class="product-card transparent-bg">
+                <img src="./UM Assets/mug.png" alt="UM Mug" class="product-img">
+                <div class="product-info">
+                    <div class="product-name">Classic Ceramic Mug</div>
+                    <div class="product-price">₱150</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="./UM Assets/um totebag.jpg" alt="Tote Bag" class="product-img">
+                <div class="product-info">
+                    <div class="product-name">Canvas Tote Bag</div>
+                    <div class="product-price">₱250</div>
+                </div>
+            </div>
+
+            <div class="product-card transparent-bg">
+                <img src="./UM Assets/pillow.png" alt="UM Pillow" class="product-img">
+                <div class="product-info">
+                    <div class="product-name">Comfort Pillow</div>
+                    <div class="product-price">₱300</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="./UM Assets/tumbler wood.jpg" alt="Tumbler" class="product-img">
+                <div class="product-info">
+                    <div class="product-name">Wood Finish Tumbler</div>
+                    <div class="product-price">₱450</div>
+                </div>
+            </div>
+            
+            <div class="product-card transparent-bg">
+                <img src="./UM Assets/nutbook.png" alt="Notebook" class="product-img">
+                <div class="product-info">
+                    <div class="product-name">Premium Notebook</div>
+                    <div class="product-price">₱120</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="feature-section">
+        <img src="./UM Assets/um4.jpg" alt="Students with Merch" class="feature-img">
+        <div class="feature-content">
+            <h3>MADE FOR<br>THE COMMUNITY</h3>
+            <p>Our merchandise is designed to represent the spirit and excellence of the university. From everyday apparel to premium study essentials, each piece is crafted with quality and pride.</p>
+            <a href="#" class="btn">Shop The Lookbook</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-huge">UMERCH</div>
+        <div class="footer-bottom">
+            <div>© 2026 UMERCH LTD.</div>
+            <div>
+                FACEBOOK &nbsp;&nbsp; INSTAGRAM &nbsp;&nbsp; TWITTER
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time)=>{
+          lenis.raf(time * 1000)
+        });
+        gsap.ticker.lagSmoothing(0, 0);
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Interactive Glass Pill Nav Logic
+        const nav = document.querySelector('.glass-pill-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // 1. Minimal Initial Hero Load
+        let introTl = gsap.timeline();
+        introTl.from(".hero-bg", { scale: 1.05, opacity: 0, duration: 2.5, ease: "power2.out" })
+               .from(".hero-content", { opacity: 0, y: 15, duration: 1.5, ease: "power2.out" }, "-=1.5");
+
+        // 2. Subtle Parallax for the Hero Section on Scroll
+        gsap.to(".hero-bg-wrapper", {
+            yPercent: 15,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".hero-section",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        gsap.to(".hero-content", {
+            yPercent: -15,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".hero-section",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // 3. Horizontal Run
+        let hTrack = document.querySelector(".horizontal-track");
+        let hPanels = gsap.utils.toArray(".h-panel");
+
+        let hTween = gsap.to(hPanels, {
+            xPercent: -100 * (hPanels.length - 1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".scene-3",
+                pin: true,
+                scrub: 1,
+                end: () => "+=" + hTrack.offsetWidth
+            }
+        });
+
+        gsap.to(".floating-img", {
+            x: 150,
+            y: -50,
+            rotation: 10,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".scene-3",
+                start: "top top",
+                end: () => "+=" + hTrack.offsetWidth,
+                scrub: 1
+            }
+        });
+
+        gsap.to(".floating-img-2", {
+            x: -200,
+            y: 50,
+            scale: 1.1,
+            rotation: -5,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".scene-3",
+                start: "top top",
+                end: () => "+=" + hTrack.offsetWidth,
+                scrub: 1
+            }
+        });
+        
+        // 4. Grid Entrance
+        gsap.from(".product-card", {
+            y: 100,
+            opacity: 0,
+            stagger: 0.1,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".shop-section",
+                start: "top 75%"
+            }
+        });
+
+        // 5. Feature Section Parallax
+        gsap.fromTo(".feature-img", 
+            { y: -50 },
+            { 
+                y: 50, 
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".feature-section",
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: 1
+                }
+            }
+        );
+    </script>
+</body>
+</html>
